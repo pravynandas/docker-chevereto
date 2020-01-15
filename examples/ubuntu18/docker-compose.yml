@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+  db:
+    image: mariadb
+    container_name: cheveretox-mariadb
+    volumes:
+      - cheveretox_db:/var/lib/mysql:rw
+    restart: unless-stopped
+    networks:
+      - cheveretox_network
+    environment:
+      MYSQL_ROOT_PASSWORD: chevereto_root
+      MYSQL_DATABASE: chevereto
+      MYSQL_USER: chevereto
+      MYSQL_PASSWORD: chevereto
+    ports:
+      - 33069:3306
+
+  cheveretox:
+    depends_on:
+      - db
+    image: pravynandas/chevereto
+    container_name: cheveretox-app
+    restart: unless-stopped
+    networks:
+      - cheveretox_network
+    environment:
+      chevereto_db_HOST: db
+      chevereto_db_USERNAME: chevereto
+      chevereto_db_PASSWORD: chevereto
+      chevereto_db_NAME: chevereto
+      chevereto_db_PREFIX: chv_
+    volumes:
+      - /home/pravy/sg750/cheveretox:/var/www/html/images:rw
+      - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+    ports:
+      - 8089:80
+
+networks:
+  cheveretox_network:
+
+volumes:
+  cheveretox_db:
