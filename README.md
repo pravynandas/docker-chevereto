@@ -1,6 +1,13 @@
 [cheveretourl]: https://chevereto.com/
 [cheveretogithub]: https://github.com/Chevereto/Chevereto-Free
 
+### Disclaimer
+Please note this is a fork of the original [repo](https://github.com/tanmng/docker-chevereto) which is intended to build a docker image from my other [fork][cheveretogithub] on branch 'develop'. Please use original projects for the actual version of the app.
+
+
+Original content follow below...
+____________________________________________
+
 [![chevereto](http://chevereto.com/app/themes/v3/img/chevereto-blue.svg)][cheveretourl]
 
 # tanmng/chevereto - Chevereto Free Docker
